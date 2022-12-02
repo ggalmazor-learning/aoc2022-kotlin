@@ -14,18 +14,13 @@ class Day1 : Day {
         return top3.sum().toString()
     }
 
-    private fun parseElves(input: String): MutableList<Int> {
-        val elves = mutableListOf<Int>()
-        var currentElf = 0
-        input.split("\n").forEach {
-            if (it.trim() == "") {
-                elves.add(currentElf)
-                currentElf = 0
-            } else {
-                currentElf += Integer.parseInt(it)
-            }
-        }
-        elves.add(currentElf)
-        return elves
+    private fun parseElves(input: String): List<Int> {
+        return input.split("\n").fold(mutableListOf(0)) { acc, it ->
+            if (it.trim() == "")
+                acc.add(0)
+            else
+                acc[acc.lastIndex] = acc.last() + Integer.parseInt(it)
+            acc
+        }.toList()
     }
 }
