@@ -8,6 +8,7 @@ interface Day {
         fun get(number: Int): Day {
             when (number) {
                 1 -> return Day1()
+                2 -> return Day2()
                 else -> throw IllegalArgumentException()
             }
         }
