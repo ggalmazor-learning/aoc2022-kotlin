@@ -25,8 +25,11 @@ dependencies {
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+    testImplementation("org.hamcrest:hamcrest:2.2")
+
 }
 
 application {
-    mainClass.set("com.ggalmazor.AdventOfCode")
+    mainClass.set("com.ggalmazor.aoc2022.AdventOfCode")
 }
