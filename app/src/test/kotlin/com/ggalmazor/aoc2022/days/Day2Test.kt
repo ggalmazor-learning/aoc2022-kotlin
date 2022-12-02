@@ -16,8 +16,8 @@ class Day2Test {
         assertThat(Day2().partOne(EXAMPLE_INPUT.trimIndent()), Matchers.equalTo("15"))
     }
 
-//    @Test
-//    fun partTwo_exaple() {
-//        MatcherAssert.assertThat(Day2().partTwo(EXAMPLE_INPUT.trimIndent()), Matchers.equalTo("45000"))
-//    }
+    @Test
+    fun partTwo_exaple() {
+        assertThat(Day2().partTwo(EXAMPLE_INPUT.trimIndent()), Matchers.equalTo("12"))
+    }
 }
