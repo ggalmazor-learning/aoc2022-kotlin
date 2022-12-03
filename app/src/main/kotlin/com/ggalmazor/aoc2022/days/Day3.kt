@@ -22,13 +22,13 @@ class Day3 : Day {
     }
 
     private fun priorityOf(char: Char): Int {
-        when {
-            char.isLowerCase() -> return char.code - 96
-            else -> return char.code - 65 + 27
+        return when {
+            char.isLowerCase() -> char.code - 96
+            else -> char.code - 65 + 27
         }
     }
 
     private fun findRepeatedChars(left: String, right: String): String {
-        return left.filter{ right.contains(it) }
+        return left.filter { right.contains(it) }
     }
 }
