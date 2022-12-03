@@ -3,11 +3,7 @@ package com.ggalmazor.aoc2022.days
 class Day3 : Day {
     override fun partOne(input: String): String {
         val lines = input.split("\n").map(String::trim).filter(String::isNotEmpty)
-        val repeatedChars = lines
-            .map { line ->
-                val halves = divideInTwo(line)
-                findRepeatedChars(halves[0], halves[1]).first()
-            }
+        val repeatedChars = lines.map { line -> divideInTwo(line).reduce(::findRepeatedChars).first() }
         return repeatedChars.map(::priorityOf).sum().toString()
     }
 
