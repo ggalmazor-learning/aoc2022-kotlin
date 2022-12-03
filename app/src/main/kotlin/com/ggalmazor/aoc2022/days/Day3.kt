@@ -9,13 +9,16 @@ class Day3 : Day {
                 val halfLength = line.length / 2
                 val firstHalf = line.take(halfLength)
                 val secondHalf = line.reversed().take(halfLength)
-                findRepeatedChar(firstHalf, secondHalf)
+                findRepeatedChars(firstHalf, secondHalf).first()
             }
         return repeatedChars.map(::priorityOf).sum().toString()
     }
 
     override fun partTwo(input: String): String {
-        return ""
+        val lines = input.split("\n").map(String::trim).filter(String::isNotEmpty)
+        val groups = lines.windowed(3, 3)
+        val repeatedChars = groups.map { group -> group.reduce(::findRepeatedChars).first() }
+        return repeatedChars.map(::priorityOf).sum().toString()
     }
 
     private fun priorityOf(char: Char): Int {
@@ -25,10 +28,7 @@ class Day3 : Day {
         }
     }
 
-    private fun findRepeatedChar(left: String, right: String): Char {
-        for (char: Char in left)
-            if (right.contains(char))
-                return char
-        throw RuntimeException("Repeated char not found")
+    private fun findRepeatedChars(left: String, right: String): String {
+        return left.filter{ right.contains(it) }
     }
 }
