@@ -9,6 +9,7 @@ interface Day {
             when (number) {
                 1 -> return Day1()
                 2 -> return Day2()
+                3 -> return Day3()
                 else -> throw IllegalArgumentException()
             }
         }
