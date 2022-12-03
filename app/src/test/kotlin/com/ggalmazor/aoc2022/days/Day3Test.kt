@@ -22,6 +22,6 @@ class Day3Test {
 
     @Test
     fun partTwo_exaple() {
-        assertThat(Day3().partTwo(EXAMPLE_INPUT.trimIndent()), equalTo("11111"))
+        assertThat(Day3().partTwo(EXAMPLE_INPUT.trimIndent()), equalTo("70"))
     }
 }

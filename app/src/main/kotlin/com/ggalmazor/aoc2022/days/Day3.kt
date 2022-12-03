@@ -9,13 +9,7 @@ class Day3 : Day {
                 val halfLength = line.length / 2
                 val firstHalf = line.take(halfLength)
                 val secondHalf = line.reversed().take(halfLength)
-                var repeatedChar = Char(0)
-                for (char: Char in firstHalf)
-                    if (secondHalf.contains(char)) {
-                        repeatedChar = char
-                        break
-                    }
-                repeatedChar
+                findRepeatedChar(firstHalf, secondHalf)
             }
         return repeatedChars.map(::priorityOf).sum().toString()
     }
@@ -29,5 +23,12 @@ class Day3 : Day {
             char.isLowerCase() -> return char.code - 96
             else -> return char.code - 65 + 27
         }
+    }
+
+    private fun findRepeatedChar(left: String, right: String): Char {
+        for (char: Char in left)
+            if (right.contains(char))
+                return char
+        throw RuntimeException("Repeated char not found")
     }
 }
