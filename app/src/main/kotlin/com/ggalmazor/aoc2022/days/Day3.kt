@@ -2,16 +2,20 @@ package com.ggalmazor.aoc2022.days
 
 class Day3 : Day {
     override fun partOne(input: String): String {
-        val repeatedChars = input.split("\n")
-            .map(String::trim)
-            .filter(String::isNotEmpty)
+        val lines = input.split("\n").map(String::trim).filter(String::isNotEmpty)
+        val repeatedChars = lines
             .map { line ->
-                val halfLength = line.length / 2
-                val firstHalf = line.take(halfLength)
-                val secondHalf = line.reversed().take(halfLength)
-                findRepeatedChars(firstHalf, secondHalf).first()
+                val halves = divideInTwo(line)
+                findRepeatedChars(halves[0], halves[1]).first()
             }
         return repeatedChars.map(::priorityOf).sum().toString()
+    }
+
+    private fun divideInTwo(line: String): List<String> {
+        val halfLength = line.length / 2
+        val firstHalf = line.take(halfLength)
+        val secondHalf = line.reversed().take(halfLength)
+        return listOf(firstHalf, secondHalf)
     }
 
     override fun partTwo(input: String): String {
