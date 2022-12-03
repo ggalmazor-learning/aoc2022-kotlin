@@ -21,14 +21,7 @@ class Day3 : Day {
         return repeatedChars.map(::priorityOf).sum().toString()
     }
 
-    private fun priorityOf(char: Char): Int {
-        return when {
-            char.isLowerCase() -> char.code - 96
-            else -> char.code - 65 + 27
-        }
-    }
+    private fun priorityOf(char: Char): Int = if (char.isLowerCase()) char.code - 96 else char.code - 65 + 27
 
-    private fun findRepeatedChars(left: String, right: String): String {
-        return left.filter { right.contains(it) }
-    }
+    private fun findRepeatedChars(left: String, right: String): String = left.filter { right.contains(it) }
 }
