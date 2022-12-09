@@ -7,7 +7,7 @@ package com.ggalmazor.aoc2022
 
 import com.ggalmazor.aoc2022.days.Day
 
-private const val MAX_DAY = 5
+private const val MAX_DAY = 6
 
 class AdventOfCode {
     fun run() {

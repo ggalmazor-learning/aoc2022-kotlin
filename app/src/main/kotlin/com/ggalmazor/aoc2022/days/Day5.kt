@@ -1,39 +1,40 @@
 package com.ggalmazor.aoc2022.days
 
-class Move(private val amount: Int, private val fromIndex: Int, private val toIndex: Int) {
-    fun execute(stacks: List<ArrayDeque<Char>>, sameOrder: Boolean = false): List<ArrayDeque<Char>> {
-        val newStacks = (stacks).map { ArrayDeque(it) }
-        val stage = ArrayDeque<Char>()
-        repeat(amount) {
-            if (sameOrder)
-                stage.add(newStacks[fromIndex].removeLast())
-            else
-                stage.addFirst(newStacks[fromIndex].removeLast())
-        }
-        repeat(amount) {
-            newStacks[toIndex].add(stage.removeLast())
-        }
-        return newStacks
-    }
-
-    companion object {
-        private val REGEX = Regex("move (\\d+) from (\\d) to (\\d)")
-
-        fun parse(line: String): Move {
-            if (line.isBlank())
-                return Move(0, 0, 0)
-
-            val match = REGEX.matchEntire(line)!!
-            return Move(
-                match.groups[1]!!.value.toInt(),
-                match.groups[2]!!.value.toInt() - 1,
-                match.groups[3]!!.value.toInt() - 1
-            )
-        }
-    }
-}
 
 class Day5 : Day {
+    class Move(private val amount: Int, private val fromIndex: Int, private val toIndex: Int) {
+        fun execute(stacks: List<ArrayDeque<Char>>, sameOrder: Boolean = false): List<ArrayDeque<Char>> {
+            val newStacks = (stacks).map { ArrayDeque(it) }
+            val stage = ArrayDeque<Char>()
+            repeat(amount) {
+                if (sameOrder)
+                    stage.add(newStacks[fromIndex].removeLast())
+                else
+                    stage.addFirst(newStacks[fromIndex].removeLast())
+            }
+            repeat(amount) {
+                newStacks[toIndex].add(stage.removeLast())
+            }
+            return newStacks
+        }
+
+        companion object {
+            private val REGEX = Regex("move (\\d+) from (\\d) to (\\d)")
+
+            fun parse(line: String): Move {
+                if (line.isBlank())
+                    return Move(0, 0, 0)
+
+                val match = REGEX.matchEntire(line)!!
+                return Move(
+                    match.groups[1]!!.value.toInt(),
+                    match.groups[2]!!.value.toInt() - 1,
+                    match.groups[3]!!.value.toInt() - 1
+                )
+            }
+        }
+    }
+
     override fun partOne(input: String): String {
         val (stacks, moves) = parse(input)
         return moves
