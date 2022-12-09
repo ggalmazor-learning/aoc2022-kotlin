@@ -11,6 +11,7 @@ interface Day {
                 2 -> return Day2()
                 3 -> return Day3()
                 4 -> return Day4()
+                5 -> return Day5()
                 else -> throw IllegalArgumentException()
             }
         }
